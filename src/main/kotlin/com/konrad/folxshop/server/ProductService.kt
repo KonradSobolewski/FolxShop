@@ -13,6 +13,6 @@ class ProductService(@Autowired var productDao: ProductDao) {
     fun findAll(): List<Product> = productDao.findAll()
     fun findByID(id: Long) = productDao.findById(id)
     fun deleteByID(id: Long) = productDao.deleteById(id)
-    fun finByName(name : String) = productDao.findByName(name)
+    fun findByName(name : String) = productDao.findByName(name)
     fun deleteByName(name: String) = productDao.deleteByName(name)
 }

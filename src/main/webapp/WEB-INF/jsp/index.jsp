@@ -85,15 +85,16 @@
             <div class="container text-center">
                 <h3>Manage Product</h3>
                 <hr>
-                <form class="form-horizontal" method="POST" action="saveProduct">
-                    <c:choose>
-                        <c:when test="${mode == 'MODE_UPDATE'}">
-                            <input type="hidden" name="id" value="${product.id}">
-                        </c:when>
-                        <c:when test="${mode == 'MODE_NEW'}">
-                            <input type="hidden" name="product.id" value="${product.id}">
-                        </c:when>
-                    </c:choose>
+                <c:choose>
+                <c:when test="${mode == 'MODE_UPDATE'}">
+                  <form class="form-horizontal" method="POST" action="saveProduct">
+                     <input type="hidden" name="id" value="${product.id}">
+                </c:when>
+                <c:when test="${mode == 'MODE_NEW'}">
+                  <form class="form-horizontal" method="POST" action="createProduct">
+                     <input type="hidden" name="product.id" value="${product.id}">
+                </c:when>
+                </c:choose>
                     <div class="form-group">
                         <label class="control-label col-md-3">Name</label>
                         <div class="col-md-7">

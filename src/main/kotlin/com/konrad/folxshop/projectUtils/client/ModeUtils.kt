@@ -1,4 +1,4 @@
-package com.konrad.folxshop.projectUtils
+package com.konrad.folxshop.projectUtils.client
 
 class ModeUtils {
     companion object {
