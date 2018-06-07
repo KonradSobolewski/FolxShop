@@ -25,11 +25,10 @@ class ProductController {
         }
     }
 
-    @PatchMapping(RestUtils.UPDATE)
+    @PostMapping(RestUtils.UPDATE)
     fun updateProduct(@RequestBody product: Product){
         when {
             !productService.findByID(product.id).isPresent -> throw CantFindProduct()
-            productService.findByName(product.name) != productService.findByID(product.id) -> throw NameNotAllowed()
             else -> productService.save(product)
         }
     }

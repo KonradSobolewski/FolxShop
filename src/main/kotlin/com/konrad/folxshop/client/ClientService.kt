@@ -17,7 +17,7 @@ class ClientService {
 
     @Autowired
     lateinit var restTemplate: RestTemplate
-    val uriProvider = UriProvider()
+    private val uriProvider = UriProvider()
 
     @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate = builder.build()
@@ -32,19 +32,20 @@ class ClientService {
             )
         }
         catch (exception: HttpStatusCodeException) {
+            print(exception.responseBodyAsString)
         }
     }
 
     fun updateProduct(product: Product) {
         try {
-             restTemplate.exchange(
+            restTemplate.exchange(
                     uriProvider.updateProduct(),
-                    HttpMethod.PATCH,
+                    HttpMethod.POST,
                     HttpEntity(product),
                     Product::class.java
             )
-        }
-        catch (exception: HttpStatusCodeException) {
+        }catch (exception: HttpStatusCodeException){
+            print(exception.responseBodyAsString)
         }
     }
 
@@ -63,6 +64,7 @@ class ClientService {
             restTemplate.getForEntity(uriProvider.getById(id), Product::class.java).body
         }
         catch (exception: HttpStatusCodeException) {
+            print(exception.responseBodyAsString)
             null
         }
     }
@@ -72,6 +74,7 @@ class ClientService {
             restTemplate.getForEntity(uriProvider.getByName(name), Product::class.java).body
         }
         catch (exception: HttpStatusCodeException) {
+            print(exception.responseBodyAsString)
             null
         }
     }
@@ -85,7 +88,9 @@ class ClientService {
                     Unit::class.java
             )
         }
-        catch (exception: HttpStatusCodeException) { }
+        catch (exception: HttpStatusCodeException) {
+            print(exception.responseBodyAsString)
+        }
     }
 
     fun deleteProductByName(name: String) {
@@ -96,7 +101,9 @@ class ClientService {
                     HttpEntity.EMPTY,
                     Unit::class.java)
         }
-        catch (exception: HttpStatusCodeException) { }
+        catch (exception: HttpStatusCodeException) {
+            print(exception.responseBodyAsString)
+        }
     }
 
 }
