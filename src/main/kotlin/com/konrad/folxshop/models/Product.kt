@@ -17,7 +17,7 @@ data class Product(
     var price : Long = -1,
 
     @Column(name = "status")
-    var status : String = ProductStatus.WITHDRAWN.toString(),
+    var status : String = ProductStatus.INSTOCK.toString(),
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_created")

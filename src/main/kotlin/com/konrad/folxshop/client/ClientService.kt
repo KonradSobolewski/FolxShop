@@ -17,7 +17,7 @@ class ClientService {
 
     @Autowired
     lateinit var restTemplate: RestTemplate
-    private val uriProvider = UriProvider()
+    val uriProvider = UriProvider()
 
     @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate = builder.build()
