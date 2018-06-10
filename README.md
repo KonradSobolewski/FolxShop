@@ -1,3 +1,3 @@
-FolxShop
+# FolxShop
 
-Spring Boot project with JPA , Bootstrap, MySql
+RESTFull Client - Server Spring Boot project with JPA , Bootstrap, MySql
